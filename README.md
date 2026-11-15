@@ -1,7 +1,7 @@
 # Lunar Landing Site Navigator
 
 NASA Space Apps Challenge 2026, Vienna (TU Wien, 14 to 15 Nov 2026).
-Team: Nkem Kingsley Umunna and Kalidas Shaji.
+Team:Cosmioneers.
 
 This repository has two parts that work side by side:
 
