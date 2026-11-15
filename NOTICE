@@ -1,0 +1,28 @@
+Lunar Landing Site Navigator
+Copyright 2026 Nkem Kingsley Umunna and Kalidas Shaji
+
+The source code in this repository has the Apache License, Version 2.0
+(see LICENSE).
+
+Data credits. The license covers our code. It does not cover NASA's data.
+
+- The positions of the Sun and the Earth come from NASA JPL Horizons
+  (https://ssd.jpl.nasa.gov/api/horizons.api). The file
+  planner/data/ephemeris.bin is made from that output.
+- The horizons come from the LRO LOLA south-pole elevation model
+  (Barker et al. 2023, Planetary Science Journal 4, 183,
+  doi:10.3847/PSJ/acf3e1), from NASA PGDA. The elevation model is not in
+  this repository.
+- Check V3 reads a small number of values from the LOLA average illumination
+  map AVGVISIB_85S_060M_201608 (Mazarico et al. 2011, Icarus 211, 1066-1081,
+  doi:10.1016/j.icarus.2010.10.030).
+- Names and positions of lunar features: IAU Gazetteer of Planetary
+  Nomenclature (USGS). Apollo landing sites: NASA NSSDC.
+
+We did not confirm the terms of use of Horizons output and of the PGDA
+products. Confirm them, and correct this file if they need other words.
+
+Parts of the code and the documents were written with an AI assistant
+(Claude, by Anthropic). See planner/docs/AI-USE.md.
+
+NASA and JPL do not endorse this project and have no connection with it.

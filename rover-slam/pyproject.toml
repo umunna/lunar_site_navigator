@@ -1,0 +1,27 @@
+# Tool configuration only (the demo runs from source via run_demo.sh, it is not pip-installed).
+[project]
+name = "lunar-slam-demo"
+version = "0.2.0"
+description = "LiDAR-inertial + ORB visual SLAM for a rover at the lunar south pole (ROS 2 Jazzy + Gazebo Harmonic)"
+requires-python = ">=3.12"
+
+[tool.ruff]
+line-length = 130
+target-version = "py312"
+extend-exclude = ["venv", "results", ".devdata"]
+
+[tool.ruff.lint]
+# syntax errors, pyflakes (undefined/unused names), import order, common bug patterns
+select = ["E9", "F", "I", "B"]
+ignore = ["B905"]   # zip() without strict= is intentional in the hot loops
+
+[tool.ruff.lint.per-file-ignores]
+"tools/make_world.py" = ["B023"]   # icosphere mid() closure is called within the same loop iteration
+
+[tool.ruff.lint.isort]
+known-third-party = ["launch", "launch_ros"]   # the ROS package, not our launch/ folder
+known-local-folder = ["voxel_map", "p2pl_icp", "make_world", "_common"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

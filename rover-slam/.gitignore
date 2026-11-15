@@ -1,0 +1,28 @@
+# Python / local environment
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Run outputs (maps, trajectories, logs) - regenerate by running the demo
+results/
+
+# Development data: ROS bags + caches (GBs)
+.devdata/
+*.mcap
+*.db3
+
+# Generated meshes (~63 MB) - rebuilt by run_demo.sh / `tools/make_world.py --from-assets`
+models/lunar_patch/meshes/
+
+# Source DEMs are downloaded separately (see README)
+*.tif
+*.TIF
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store

@@ -1,0 +1,6 @@
+# One line-ending policy for Windows and WSL checkouts of the same repo.
+* text=auto eol=lf
+*.bin binary
+*.tif binary
+*.png binary
+*.mp4 binary

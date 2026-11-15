@@ -1,0 +1,11 @@
+{
+  "name": "@lsn/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "description": "Pure TypeScript core: constants, types, ephemeris codec, sky geometry, skyline. No I/O.",
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

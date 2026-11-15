@@ -1,0 +1,37 @@
+[
+  {
+    "id": "V0",
+    "title": "The Moon height map is the right way round",
+    "criterion": "Known craters are low, Mons Malapert is high, and only one orientation of the map fits",
+    "status": "pass",
+    "summary": "There are 8 possible ways to orient the map. 1 of them puts all 7 known craters and mountains in the right place: the one that the app uses. With the first threshold (1.0 km for craters), 0 of 8 fitted. The report gives the history."
+  },
+  {
+    "id": "V1",
+    "title": "Our Sun and Earth directions agree with NASA JPL Horizons",
+    "criterion": "Sun within 0.001 degrees and Earth within 0.01 degrees, at 8 places and 300 times each, from the file that the app uses",
+    "status": "pass",
+    "summary": "The largest difference at 8 places and 300 times: Sun 0.000192 degrees, Earth 0.005983 degrees. At times on the 10-minute grid the largest difference is 0.005980 degrees. At times halfway between two grid points it is 0.005983 degrees."
+  },
+  {
+    "id": "V2",
+    "title": "The horizon calculation is correct on test shapes",
+    "criterion": "Agreement with exact formulas, correct compass direction, correct result after a rotation and after halving the step",
+    "status": "pass",
+    "summary": "14 of 14 automated tests passed. They cover 4 requirements."
+  },
+  {
+    "id": "V3",
+    "title": "Sunlight at 3 places compared with NASA's published light map",
+    "criterion": "The difference at each place is reported. An exact match is not expected: the time span, the map detail and the observer height differ",
+    "status": "pass",
+    "summary": "At 3 places, our share of time with the Sun in view is at most 6.1 percentage points away from the NASA values around the place (allowed: 15). Shackleton rim (high point): ours 88%, NASA 0 to 85%; Haworth rim (high point): ours 41%, NASA 24 to 39%; Mons Malapert (summit): ours 67%, NASA 49 to 60%."
+  },
+  {
+    "id": "V4",
+    "title": "Countdowns and totals are correct",
+    "criterion": "Agreement with a slow, simple count for the time to sunset and Earthset and for the totals of a stay",
+    "status": "pass",
+    "summary": "17 of 17 automated tests passed. They cover 5 requirements."
+  }
+]

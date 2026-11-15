@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<!-- Lunar SLAM rover: 4-wheel skid steer, mast with camera + 32-beam 3D LiDAR + IMU + headlamp.
+     Mount poses here must match MOUNT in nodes/slam_node.py. -->
+<sdf version="1.9">
+  <model name="rover">
+    <link name="base_link">
+      <pose>0 0 0.35 0 0 0</pose>
+      <inertial><mass>60</mass>
+        <inertia><ixx>4</ixx><iyy>6</iyy><izz>8</izz><ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia>
+      </inertial>
+      <collision name="chassis_col"><geometry><box><size>1.1 0.7 0.3</size></box></geometry></collision>
+      <visual name="chassis"><geometry><box><size>1.1 0.7 0.3</size></box></geometry>
+        <material><ambient>0.8 0.8 0.82 1</ambient><diffuse>0.85 0.85 0.88 1</diffuse></material></visual>
+      <visual name="mast"><pose>0.2 0 0.5 0 0 0</pose><geometry><cylinder><radius>0.04</radius><length>0.8</length></cylinder></geometry>
+        <material><ambient>0.3 0.3 0.3 1</ambient><diffuse>0.3 0.3 0.3 1</diffuse></material></visual>
+      <visual name="lidar_head"><pose>0.2 0 0.95 0 0 0</pose><geometry><cylinder><radius>0.07</radius><length>0.09</length></cylinder></geometry>
+        <material><ambient>0.1 0.1 0.1 1</ambient><diffuse>0.1 0.1 0.1 1</diffuse></material></visual>
+      <visual name="cam_box"><pose>0.3 0 0.85 0 0.25 0</pose><geometry><box><size>0.08 0.16 0.06</size></box></geometry>
+        <material><ambient>0.9 0.6 0.1 1</ambient><diffuse>0.9 0.6 0.1 1</diffuse></material></visual>
+
+      <!-- 3D LiDAR: 32 beams, 360 deg, 10 Hz (base_link -> lidar: 0.2 0 0.95) -->
+      <sensor name="lidar" type="gpu_lidar">
+        <pose>0.2 0 0.95 0 0 0</pose>
+        <topic>lidar</topic>
+        <gz_frame_id>lidar_link</gz_frame_id>
+        <update_rate>10</update_rate>
+        <always_on>1</always_on>
+        <visualize>false</visualize>
+        <lidar>
+          <scan>
+            <horizontal><samples>900</samples><resolution>1</resolution><min_angle>-3.14159</min_angle><max_angle>3.14159</max_angle></horizontal>
+            <vertical><samples>32</samples><resolution>1</resolution><min_angle>-0.45</min_angle><max_angle>0.15</max_angle></vertical>
+          </scan>
+          <range><min>0.8</min><max>60</max><resolution>0.01</resolution></range>
+          <noise><type>gaussian</type><mean>0</mean><stddev>0.01</stddev></noise>
+        </lidar>
+      </sensor>
+
+      <!-- Camera: 640x480, 10 Hz, pitched 0.25 rad down (base_link -> camera: 0.3 0 0.85, pitch 0.25) -->
+      <sensor name="camera" type="camera">
+        <pose>0.3 0 0.85 0 0.25 0</pose>
+        <topic>camera/image</topic>
+        <gz_frame_id>camera_link</gz_frame_id>
+        <update_rate>10</update_rate>
+        <always_on>1</always_on>
+        <camera>
+          <horizontal_fov>1.3</horizontal_fov>
+          <image><width>640</width><height>480</height><format>R8G8B8</format></image>
+          <clip><near>0.1</near><far>300</far></clip>
+          <noise><type>gaussian</type><mean>0</mean><stddev>0.004</stddev></noise>
+        </camera>
+      </sensor>
+
+      <sensor name="imu" type="imu">
+        <pose>0 0 0.1 0 0 0</pose>
+        <topic>imu</topic>
+        <gz_frame_id>imu_link</gz_frame_id>
+        <update_rate>100</update_rate>
+        <always_on>1</always_on>
+        <imu>
+          <!-- tactical-grade gyro: white noise + a small constant bias (~0.01 deg/s) -->
+          <angular_velocity>
+            <x><noise type="gaussian"><mean>0</mean><stddev>0.0003</stddev><bias_mean>0.0002</bias_mean></noise></x>
+            <y><noise type="gaussian"><mean>0</mean><stddev>0.0003</stddev><bias_mean>0.0002</bias_mean></noise></y>
+            <z><noise type="gaussian"><mean>0</mean><stddev>0.0003</stddev><bias_mean>0.0002</bias_mean></noise></z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x><noise type="gaussian"><mean>0</mean><stddev>0.01</stddev></noise></x>
+            <y><noise type="gaussian"><mean>0</mean><stddev>0.01</stddev></noise></y>
+            <z><noise type="gaussian"><mean>0</mean><stddev>0.01</stddev></noise></z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+
+      <!-- Headlamp: lets the camera see a few metres inside the shadow, like an astronaut's lamp -->
+      <light name="headlamp" type="spot">
+        <pose>0.55 0 0.6 0 0.35 0</pose>
+        <cast_shadows>false</cast_shadows>
+        <diffuse>0.9 0.9 0.85 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+        <direction>1 0 0</direction>
+        <attenuation><range>12</range><constant>0.3</constant><linear>0.08</linear><quadratic>0.02</quadratic></attenuation>
+        <spot><inner_angle>0.5</inner_angle><outer_angle>0.9</outer_angle><falloff>1.0</falloff></spot>
+        <intensity>0.6</intensity>
+      </light>
+    </link>
+
+    <!-- wheels -->
+    <link name="wheel_fl"><pose>0.4 0.45 0.25 -1.5708 0 0</pose>
+      <inertial><mass>3</mass><inertia><ixx>0.06</ixx><iyy>0.06</iyy><izz>0.1</izz><ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+      <collision name="c"><geometry><cylinder><radius>0.25</radius><length>0.18</length></cylinder></geometry>
+        <surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode></friction></surface></collision>
+      <visual name="v"><geometry><cylinder><radius>0.25</radius><length>0.18</length></cylinder></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+    </link>
+    <link name="wheel_rl"><pose>-0.4 0.45 0.25 -1.5708 0 0</pose>
+      <inertial><mass>3</mass><inertia><ixx>0.06</ixx><iyy>0.06</iyy><izz>0.1</izz><ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+      <collision name="c"><geometry><cylinder><radius>0.25</radius><length>0.18</length></cylinder></geometry>
+        <surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode></friction></surface></collision>
+      <visual name="v"><geometry><cylinder><radius>0.25</radius><length>0.18</length></cylinder></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+    </link>
+    <link name="wheel_fr"><pose>0.4 -0.45 0.25 -1.5708 0 0</pose>
+      <inertial><mass>3</mass><inertia><ixx>0.06</ixx><iyy>0.06</iyy><izz>0.1</izz><ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+      <collision name="c"><geometry><cylinder><radius>0.25</radius><length>0.18</length></cylinder></geometry>
+        <surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode></friction></surface></collision>
+      <visual name="v"><geometry><cylinder><radius>0.25</radius><length>0.18</length></cylinder></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+    </link>
+    <link name="wheel_rr"><pose>-0.4 -0.45 0.25 -1.5708 0 0</pose>
+      <inertial><mass>3</mass><inertia><ixx>0.06</ixx><iyy>0.06</iyy><izz>0.1</izz><ixy>0</ixy><ixz>0</ixz><iyz>0</iyz></inertia></inertial>
+      <collision name="c"><geometry><cylinder><radius>0.25</radius><length>0.18</length></cylinder></geometry>
+        <surface><friction><ode><mu>1.2</mu><mu2>1.2</mu2></ode></friction></surface></collision>
+      <visual name="v"><geometry><cylinder><radius>0.25</radius><length>0.18</length></cylinder></geometry>
+        <material><ambient>0.15 0.15 0.15 1</ambient><diffuse>0.15 0.15 0.15 1</diffuse></material></visual>
+    </link>
+    <joint name="j_fl" type="revolute"><parent>base_link</parent><child>wheel_fl</child><axis><xyz>0 0 1</xyz><limit><lower>-1e16</lower><upper>1e16</upper></limit></axis></joint>
+    <joint name="j_rl" type="revolute"><parent>base_link</parent><child>wheel_rl</child><axis><xyz>0 0 1</xyz><limit><lower>-1e16</lower><upper>1e16</upper></limit></axis></joint>
+    <joint name="j_fr" type="revolute"><parent>base_link</parent><child>wheel_fr</child><axis><xyz>0 0 1</xyz><limit><lower>-1e16</lower><upper>1e16</upper></limit></axis></joint>
+    <joint name="j_rr" type="revolute"><parent>base_link</parent><child>wheel_rr</child><axis><xyz>0 0 1</xyz><limit><lower>-1e16</lower><upper>1e16</upper></limit></axis></joint>
+
+    <plugin filename="gz-sim-diff-drive-system" name="gz::sim::systems::DiffDrive">
+      <left_joint>j_fl</left_joint><left_joint>j_rl</left_joint>
+      <right_joint>j_fr</right_joint><right_joint>j_rr</right_joint>
+      <wheel_separation>0.9</wheel_separation>
+      <wheel_radius>0.25</wheel_radius>
+      <topic>cmd_vel</topic>
+      <odom_topic>wheel_odom</odom_topic>
+      <max_linear_acceleration>0.8</max_linear_acceleration>
+      <max_angular_acceleration>1.5</max_angular_acceleration>
+    </plugin>
+    <!-- ground truth (used only by the route driver and the error display, never by SLAM) -->
+    <plugin filename="gz-sim-odometry-publisher-system" name="gz::sim::systems::OdometryPublisher">
+      <odom_frame>map</odom_frame>
+      <robot_base_frame>gt_base</robot_base_frame>
+      <odom_topic>ground_truth/odom</odom_topic>
+      <dimensions>3</dimensions>
+      <odom_publish_frequency>30</odom_publish_frequency>
+    </plugin>
+  </model>
+</sdf>

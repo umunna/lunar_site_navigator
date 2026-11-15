@@ -1,0 +1,193 @@
+Panels: []
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/PointCloud2
+      Name: 3D map (camera colour = sunlit, blue/violet = LiDAR only)
+      Enabled: true
+      Topic:
+        Value: /slam/map
+        Depth: 1
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+      Color Transformer: RGB8
+      Style: Points
+      Size (Pixels): 3
+      Size (m): 0.2
+      Alpha: 1
+      Decay Time: 0
+      Position Transformer: XYZ
+      Selectable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Invert Rainbow: false
+      Autocompute Intensity Bounds: true
+      Max Intensity: 4096
+      Min Intensity: 0
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Channel Name: intensity
+      Value: true
+    - Class: rviz_default_plugins/PointCloud2
+      Name: ORB map points (camera features with LiDAR depth)
+      Enabled: true
+      Topic:
+        Value: /slam/orb_points
+        Depth: 1
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+      Color Transformer: RGB8
+      Style: Points
+      Size (Pixels): 3
+      Size (m): 0.1
+      Alpha: 1
+      Decay Time: 0
+      Position Transformer: XYZ
+      Selectable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Invert Rainbow: false
+      Autocompute Intensity Bounds: true
+      Max Intensity: 4096
+      Min Intensity: 0
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Channel Name: intensity
+      Value: true
+    - Class: rviz_default_plugins/PointCloud2
+      Name: Live LiDAR scan
+      Enabled: true
+      Topic:
+        Value: /slam/scan
+        Depth: 1
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+      Color Transformer: FlatColor
+      Color: 255; 255; 120
+      Style: Points
+      Size (Pixels): 2
+      Size (m): 0.05
+      Alpha: 0.5
+      Decay Time: 0
+      Position Transformer: XYZ
+      Selectable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Invert Rainbow: false
+      Autocompute Intensity Bounds: true
+      Max Intensity: 4096
+      Min Intensity: 0
+      Max Color: 255; 255; 255
+      Min Color: 0; 0; 0
+      Channel Name: intensity
+      Value: true
+    - Class: rviz_default_plugins/Path
+      Name: SLAM path (orange)
+      Enabled: true
+      Topic:
+        Value: /slam/path
+        Depth: 1
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+      Color: 255; 140; 0
+      Alpha: 1
+      Line Style: Billboards
+      Line Width: 0.35
+      Buffer Length: 1
+      Head Diameter: 0.3
+      Head Length: 0.2
+      Length: 0.3
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0.3
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Radius: 0.03
+      Shaft Diameter: 0.1
+      Shaft Length: 0.1
+      Value: true
+    - Class: rviz_default_plugins/Path
+      Name: Ground truth path (green)
+      Enabled: true
+      Topic:
+        Value: /ground_truth/path
+        Depth: 1
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+      Color: 0; 255; 0
+      Alpha: 1
+      Line Style: Lines
+      Line Width: 0.03
+      Buffer Length: 1
+      Head Diameter: 0.3
+      Head Length: 0.2
+      Length: 0.3
+      Offset:
+        X: 0
+        Y: 0
+        Z: 0.35
+      Pose Color: 255; 85; 255
+      Pose Style: None
+      Radius: 0.03
+      Shaft Diameter: 0.1
+      Shaft Length: 0.1
+      Value: true
+    - Class: rviz_default_plugins/Marker
+      Name: Rover (SLAM estimate)
+      Enabled: true
+      Topic:
+        Value: /slam/rover
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+      Namespaces:
+        rover: true
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 8; 8; 14
+    Fixed Frame: map
+    Frame Rate: 30
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/Interact
+      Hide Inactive Objects: true
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+      Line color: 128; 128; 0
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/ThirdPersonFollower
+      Name: Current View
+      Target Frame: slam_base
+      Distance: 38
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0
+      Focal Shape Fixed Size: true
+      Focal Shape Size: 0.05
+      Invert Z Axis: false
+      Near Clip Distance: 0.01
+      Pitch: 0.62
+      Yaw: 3.6
+      Value: ThirdPersonFollower (rviz_default_plugins)
+    Saved: ~
+Window Geometry:
+  Height: 900
+  Width: 1600
+  X: 40
+  Y: 40

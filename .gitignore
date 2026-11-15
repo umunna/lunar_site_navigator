@@ -1,0 +1,18 @@
+# Both parts
+.DS_Store
+*.log
+.claude/
+
+# Planner (Node)
+node_modules/
+dist/
+coverage/
+planner/.npm/
+# Raw downloads and stored answers of NASA services. The build scripts make them again.
+planner/data-cache/
+
+# Rover simulation: see rover-slam/.gitignore
+
+# GitLab Pages output of the pipeline
+/public/
+/.cache/

@@ -1,0 +1,12 @@
+{
+  "name": "@lsn/pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "description": "Build-time Node scripts: Horizons fetch, DEM skylines, validation. Never runs in the browser.",
+  "dependencies": {
+    "@lsn/shared": "0.1.0",
+    "geotiff": "3.0.5"
+  }
+}

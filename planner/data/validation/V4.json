@@ -1,0 +1,19 @@
+{
+  "id": "V4",
+  "title": "Countdowns and totals are correct",
+  "criterion": "Agreement with a slow, simple count for the time to sunset and Earthset and for the totals of a stay",
+  "status": "pass",
+  "generatedAtUtc": "2026-11-15T08:21:45Z",
+  "summary": "17 of 17 automated tests passed. They cover 5 requirements.",
+  "details": [
+    "LSN-EVT-004 also checks the real Sun and Earth data against physics: the near side of the Moon always sees Earth, and the far side never sees it. LSN-PLN-004 covers the best-value marks of the Compare places page.",
+    "",
+    "| Requirement | Tests | Passed |",
+    "|---|---|---|",
+    "| LSN-EVT-001 | 4 | 4 |",
+    "| LSN-EVT-002 | 3 | 3 |",
+    "| LSN-EVT-003 | 4 | 4 |",
+    "| LSN-EVT-004 | 4 | 4 |",
+    "| LSN-PLN-004 | 2 | 2 |"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "V2",
+  "title": "The horizon calculation is correct on test shapes",
+  "criterion": "Agreement with exact formulas, correct compass direction, correct result after a rotation and after halving the step",
+  "status": "pass",
+  "generatedAtUtc": "2026-11-15T08:21:45Z",
+  "summary": "14 of 14 automated tests passed. They cover 4 requirements.",
+  "details": [
+    "The expected values come from exact formulas or from a second, independent 3D calculation in geometry.ts. We broke the compass convention on purpose one time, and the tests failed as they must.",
+    "",
+    "| Requirement | Tests | Passed |",
+    "|---|---|---|",
+    "| LSN-SKY-001 | 6 | 6 |",
+    "| LSN-SKY-002 | 3 | 3 |",
+    "| LSN-SKY-003 | 4 | 4 |",
+    "| LSN-SKY-004 | 1 | 1 |"
+  ]
+}

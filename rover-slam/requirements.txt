@@ -1,0 +1,8 @@
+# Python deps beyond ROS 2 Jazzy (rclpy, cv2/OpenCV, sensor_msgs_py come from apt: ros-jazzy-desktop).
+# Create the venv WITH system site-packages so ROS' Python modules stay visible:
+#   python3 -m venv --system-site-packages venv && venv/bin/pip install -r requirements.txt
+numpy>=1.26,<2        # ROS Jazzy's OpenCV is built against NumPy 1.x
+scipy>=1.11
+pillow>=10
+matplotlib>=3.6       # terrain preview only
+rasterio>=1.3         # only for rebuilding the world from the LOLA DEM (tools/make_world.py)

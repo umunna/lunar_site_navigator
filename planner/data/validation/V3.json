@@ -1,0 +1,22 @@
+{
+  "id": "V3",
+  "title": "Sunlight at 3 places compared with NASA's published light map",
+  "criterion": "The difference at each place is reported. An exact match is not expected: the time span, the map detail and the observer height differ",
+  "status": "pass",
+  "generatedAtUtc": "2026-11-14T18:48:45Z",
+  "summary": "At 3 places, our share of time with the Sun in view is at most 6.1 percentage points away from the NASA values around the place (allowed: 15). Shackleton rim (high point): ours 88%, NASA 0 to 85%; Haworth rim (high point): ours 41%, NASA 24 to 39%; Mons Malapert (summit): ours 67%, NASA 49 to 60%.",
+  "details": [
+    "NASA map: AVGVISIB_85S_060M_201608 (http://imbrium.mit.edu/EXTRAS/ILLUMINATION/IMG/AVGVISIB_85S_060M_201608.IMG), read 2026-11-14T18:48:44Z. NASA LOLA team, PGDA product 69. Cite Mazarico et al. (2011), Icarus 211, 1066-1081, doi:10.1016/j.icarus.2010.10.030.",
+    "The label of the map says that each value is the share of hourly time steps in which the pixel was sunlit by any fraction of the solar disc. That is the same rule as ours.",
+    "Ours: the share of the 157824 samples of data/ephemeris.bin (3 years, 10-minute steps) with any part of the Sun above the skyline of the place, from data/skylines.bin (80 m height map, observer 2 m above the ground).",
+    "NASA: the nearest 60 m pixel and the 3 x 3 pixels around it (180 m). Near a rim the value changes much from one pixel to the next, so the table gives the lowest and the highest value.",
+    "Gap: 0 when our share is between the lowest and the highest NASA value nearby, otherwise the distance to that range. The check passes when every gap is 15 points or less. We set this tolerance before the first run.",
+    "An exact match is not expected: NASA averaged about 18.6 years and we use 3 years, the two height maps have different detail, and the label does not give the observer height.",
+    "",
+    "| Place | Latitude | East longitude | Ours, 3 years (%) | NASA, nearest pixel (%) | NASA, lowest to highest nearby (%) | Gap (points) |",
+    "|---|---|---|---|---|---|---|",
+    "| Shackleton rim (high point) | -89.7828 | -155.7046 | 88.2 | 43.2 | 0.0 to 85.5 | 2.8 |",
+    "| Haworth rim (high point) | -86.5158 | 2.5115 | 40.6 | 33.0 | 23.9 to 38.8 | 1.8 |",
+    "| Mons Malapert (summit) | -85.987 | 2.0553 | 66.5 | 55.6 | 48.9 to 60.4 | 6.1 |"
+  ]
+}

@@ -1,0 +1,46 @@
+API VERSION: 1.2
+API SOURCE: NASA/JPL Horizons API
+
+
+
+*******************************************************************************
+Ephemeris / API_USER Sat Nov 14 07:11:30 2026 Pasadena, USA      / Horizons    
+*******************************************************************************
+Target body name: Moon (301)                      {source: DE441}
+Center body name: Earth (399)                     {source: DE441}
+Center-site name: GEOCENTRIC
+*******************************************************************************
+Start time      : A.D. 2026-Nov-01 00:00:00.0000 UT      
+Stop  time      : A.D. 2026-Nov-01 00:30:00.0000 UT      
+Step-size       : 10 minutes
+*******************************************************************************
+Target pole/equ : MOON_ME                         {East-longitude positive}
+Target radii    : 1737.4, 1737.4, 1737.4 km       {Equator_a, b, pole_c}       
+Center geodetic : 0.0, 0.0, -6378.137             {E-lon(deg),Lat(deg),Alt(km)}
+Center cylindric: 0.0, 0.0, 0.0                   {E-lon(deg),Dxy(km),Dz(km)}
+Center pole/equ : ITRF93                          {East-longitude positive}
+Center radii    : 6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}       
+Target primary  : Earth
+Vis. interferer : MOON (R_eq= 1737.400) km        {source: DE441}
+Rel. light bend : Sun                             {source: DE441}
+Rel. lght bnd GM: 1.3271E+11 km^3/s^2                                          
+Atmos refraction: NO (AIRLESS)
+RA format       : HMS
+Time format     : CAL 
+Calendar mode   : Mixed Julian/Gregorian
+EOP file        : eop.261113.p270209                                           
+EOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-NOV-13. PREDICTS-> 2027-FEB-08
+Units conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s 
+Table cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )
+Table cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )
+Table cut-offs 3: RA/DEC angular rate (     0.0=NO )                           
+Table format    : Comma Separated Values (spreadsheet)
+*************************************************************************************************************************************
+ Date__(UT)__HR:MN, , , ObsSub-LON, ObsSub-LAT,  SunSub-LON, SunSub-LAT,                r,       rdot,             delta,     deldot,
+*************************************************************************************************************************************
+$$SOE
+ 2026-Nov-01 00:00, , ,   3.955929,  -3.208598,  285.130931,  -1.457223,  1.485751076E+08, -1.3921071,  3.6990485554E+05,  0.0342063,
+ 2026-Nov-01 00:10, , ,   3.962420,  -3.198721,  285.046433,  -1.457289,  1.485742723E+08, -1.3923609,  3.6992538896E+05,  0.0342451,
+ 2026-Nov-01 00:20, , ,   3.968898,  -3.188835,  284.961935,  -1.457355,  1.485734368E+08, -1.3926123,  3.6994594563E+05,  0.0342838,
+ 2026-Nov-01 00:30, , ,   3.975363,  -3.178941,  284.877436,  -1.457421,  1.485726011E+08, -1.3928613,  3.6996652548E+05,  0.0343224,
+$$EOE
